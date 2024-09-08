@@ -18,7 +18,6 @@
 	"author": "ChaosLee",
 	"license": "MIT",
 	"dependencies": {
-		"@rollup/plugin-terser": "^0.4.4",
 		"@types/node": "^22.5.4",
 		"rollup": "^4.21.2"
 	}

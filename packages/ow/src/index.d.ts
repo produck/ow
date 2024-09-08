@@ -6,11 +6,15 @@ interface Thrower<ErrorConstructor extends abstract new (...args: any) => any> {
 	(...args: ConstructorParameters<ErrorConstructor>): never;
 }
 
-export const Error: Thrower<ErrorConstructor>;
-export const EvalError: Thrower<EvalErrorConstructor>;
-export const RangeError: Thrower<RangeErrorConstructor>;
-export const ReferenceError: Thrower<ReferenceErrorConstructor>;
-export const SyntaxError: Thrower<SyntaxErrorConstructor>;
-export const TypeError: Thrower<TypeErrorConstructor>;
-export const URIError: Thrower<URIErrorConstructor>;
-export const AggregateError: Thrower<AggregateErrorConstructor>;
+export module Error {
+	export const Common: Thrower<ErrorConstructor>;
+	export const Eval: Thrower<EvalErrorConstructor>;
+	export const Range: Thrower<RangeErrorConstructor>;
+	export const Reference: Thrower<ReferenceErrorConstructor>;
+	export const Syntax: Thrower<SyntaxErrorConstructor>;
+	export const Type: Thrower<TypeErrorConstructor>;
+	export const URI: Thrower<URIErrorConstructor>;
+	export const Aggregate: Thrower<AggregateErrorConstructor>;
+}
+
+export function Invalid(role: string, expected: string): never;
