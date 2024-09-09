@@ -2,6 +2,13 @@
 	"name": "@produck/ow",
 	"version": "0.0.0",
 	"description": "Throwing exception regularly.",
+	"files": [
+		"src",
+		"tsconfig.json"
+	],
+	"publishConfig": {
+		"access": "public"
+	},
 	"main": "index.mjs",
 	"exports": {
 		"import": "./src/index.mjs",
@@ -9,6 +16,8 @@
 		"types": "./src/index.d.ts"
 	},
 	"scripts": {
+		"build": "rollup -c script/rollup.config.mjs",
+		"prepublishOnly": "npm run build"
 	},
 	"keywords": [
 		"throw",
@@ -17,8 +26,8 @@
 	],
 	"author": "ChaosLee",
 	"license": "MIT",
-	"dependencies": {
-		"@types/node": "^22.5.4",
+	"devDependencies": {
+		"@rollup/plugin-terser": "^0.4.4",
 		"rollup": "^4.21.2"
 	}
 }
