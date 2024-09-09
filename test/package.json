@@ -1,6 +1,6 @@
 {
 	"private": true,
-	"version": "0.0.0",
+	"version": "0.1.0",
 	"scripts": {
 		"test": "mocha \"**/*.spec.mjs\" -t 999999999"
 	},
@@ -11,6 +11,6 @@
 		"mocha": "^10.7.3"
 	},
 	"dependencies": {
-		"@produck/ow": "^0.0.0"
+		"@produck/ow": "^0.1.0"
 	}
 }

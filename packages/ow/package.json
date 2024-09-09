@@ -1,6 +1,6 @@
 {
 	"name": "@produck/ow",
-	"version": "0.0.0",
+	"version": "0.1.0",
 	"description": "Throwing exception regularly.",
 	"files": [
 		"src",
