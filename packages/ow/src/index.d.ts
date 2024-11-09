@@ -2,11 +2,11 @@ declare function _throw(any: any): never;
 
 export { _throw as throw };
 
-interface Thrower<ErrorConstructor extends abstract new (...args: any) => any> {
+interface Thrower<ErrorConstructor extends abstract new (...args: any[]) => any> {
 	(...args: ConstructorParameters<ErrorConstructor>): never;
 }
 
-export module Error {
+export namespace Error {
 	export const Common: Thrower<ErrorConstructor>;
 	export const Eval: Thrower<EvalErrorConstructor>;
 	export const Range: Thrower<RangeErrorConstructor>;
