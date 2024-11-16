@@ -17,6 +17,7 @@
 		"types": "./src/index.d.ts"
 	},
 	"scripts": {
+		"test": "mocha \"**/test/*.spec.mjs\" -t 999999999",
 		"build": "rollup -c script/rollup.config.mjs",
 		"prepublishOnly": "npm run build"
 	},
@@ -26,9 +27,5 @@
 		"error"
 	],
 	"author": "ChaosLee",
-	"license": "MIT",
-	"devDependencies": {
-		"@rollup/plugin-terser": "^0.4.4",
-		"rollup": "^4.25.0"
-	}
+	"license": "MIT"
 }

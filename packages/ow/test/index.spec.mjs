@@ -1,6 +1,6 @@
 import * as assert from 'node:assert/strict';
 import { describe, it } from 'mocha';
-import * as Ow from '@produck/ow';
+import * as Ow from '../src/index.mjs';
 
 describe('Ow', function () {
 	describe('.throw()', function () {
