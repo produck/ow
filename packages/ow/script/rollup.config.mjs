@@ -30,9 +30,6 @@ export default moduleList.map(config => {
 	return defineConfig({
 		input: path.resolve('src/index.mjs'),
 		treeshake: 'smallest',
-		external: {
-
-		},
 		output: {
 			interop: 'esModule',
 			file: config.output,
