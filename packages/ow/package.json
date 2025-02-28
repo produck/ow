@@ -3,8 +3,7 @@
 	"version": "0.1.3",
 	"description": "Throwing exception regularly.",
 	"files": [
-		"src",
-		"tsconfig.json"
+		"src"
 	],
 	"publishConfig": {
 		"access": "public"
