@@ -24,9 +24,21 @@
 	},
 	"keywords": [
 		"throw",
+		"thrower",
+		"error",
 		"exception",
-		"error"
+		"assert",
+		"expression"
 	],
 	"author": "ChaosLee",
-	"license": "MIT"
+	"license": "MIT",
+	"repository": {
+		"type": "git",
+		"url": "git+https://github.com/produck/ow.git",
+		"directory": "packages/ow"
+	},
+	"bugs": {
+		"url": "https://github.com/produck/ow/issues"
+	},
+	"homepage": "https://github.com/produck/ow#readme"
 }
