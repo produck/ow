@@ -1,5 +1,5 @@
 import * as assert from 'node:assert/strict';
-import { describe, it } from 'mocha';
+import { describe, it } from 'node:test';
 import * as Ow from '../src/index.mjs';
 
 describe('Ow', function () {
