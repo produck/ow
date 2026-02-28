@@ -2,13 +2,65 @@ import * as assert from 'node:assert/strict';
 import { describe, it } from 'node:test';
 import * as Ow from '../src/index.mjs';
 
-describe('Ow', function () {
-	describe('.throw()', function () {
+describe('Ow', () => {
+	describe('.throw()', () => {
+		it('should throw the given value.', () => {
+			const error = new Error('foo');
+
+			assert.throws(() => Ow.throw(error), {
+				name: 'Error',
+				message: 'foo',
+			});
+		});
+
+		it('should throw a non-error value.', () => {
+			assert.throws(() => Ow.throw('bar'), (thrown) => {
+				assert.equal(thrown, 'bar');
+
+				return true;
+			});
+		});
 	});
 
-	describe('.Error()', function () {
-		describe('.Common()', function () {
-			it('should throw a Error.', function () {
+	describe('.Thrower()', () => {
+		it('should return a function.', () => {
+			const thrower = Ow.Thrower(Error);
+
+			assert.equal(typeof thrower, 'function');
+		});
+
+		it('should throw the specified error type.', () => {
+			const thrower = Ow.Thrower(TypeError);
+
+			assert.throws(() => thrower('bar'), {
+				name: 'TypeError',
+				message: 'bar',
+			});
+		});
+
+		it('should create thrower for custom error class.', () => {
+			class CustomError extends Error {
+				constructor(message) {
+					super(message);
+					this.name = 'CustomError';
+				}
+			}
+
+			const thrower = Ow.Thrower(CustomError);
+
+			try {
+				thrower('baz');
+			} catch (e) {
+				assert.ok(e instanceof CustomError);
+				assert.equal(e.name, 'CustomError');
+				assert.equal(e.message, 'baz');
+			}
+		});
+	});
+
+	describe('.Error()', () => {
+		describe('.Common()', () => {
+			it('should throw a Error.', () => {
 				try {
 					Ow.Error.Common('foo');
 				} catch (e) {
@@ -18,8 +70,8 @@ describe('Ow', function () {
 			});
 		});
 
-		describe('.Eval()', function () {
-			it('should throw a EvalError.', function () {
+		describe('.Eval()', () => {
+			it('should throw a EvalError.', () => {
 				try {
 					Ow.Error.Eval('foo');
 				} catch (e) {
@@ -29,8 +81,8 @@ describe('Ow', function () {
 			});
 		});
 
-		describe('.Range()', function () {
-			it('should throw a RangeError.', function () {
+		describe('.Range()', () => {
+			it('should throw a RangeError.', () => {
 				try {
 					Ow.Error.Range('foo');
 				} catch (e) {
@@ -40,8 +92,8 @@ describe('Ow', function () {
 			});
 		});
 
-		describe('.Reference()', function () {
-			it('should throw a ReferenceError.', function () {
+		describe('.Reference()', () => {
+			it('should throw a ReferenceError.', () => {
 				try {
 					Ow.Error.Reference('foo');
 				} catch (e) {
@@ -51,8 +103,8 @@ describe('Ow', function () {
 			});
 		});
 
-		describe('.Syntax()', function () {
-			it('should throw a SyntaxError.', function () {
+		describe('.Syntax()', () => {
+			it('should throw a SyntaxError.', () => {
 				try {
 					Ow.Error.Syntax('foo');
 				} catch (e) {
@@ -63,8 +115,8 @@ describe('Ow', function () {
 
 		});
 
-		describe('.Type()', function () {
-			it('should throw a TypeError.', function () {
+		describe('.Type()', () => {
+			it('should throw a TypeError.', () => {
 				try {
 					Ow.Error.Type('foo');
 				} catch (e) {
@@ -75,8 +127,8 @@ describe('Ow', function () {
 
 		});
 
-		describe('.URI()', function () {
-			it('should throw a URIError.', function () {
+		describe('.URI()', () => {
+			it('should throw a URIError.', () => {
 				try {
 					Ow.Error.URI('foo');
 				} catch (e) {
@@ -86,8 +138,8 @@ describe('Ow', function () {
 			});
 		});
 
-		describe('.Aggregate()', function () {
-			it('should throw a AggregateError.', function () {
+		describe('.Aggregate()', () => {
+			it('should throw a AggregateError.', () => {
 				try {
 					Ow.Error.Aggregate([1, 2, 3], 'foo');
 				} catch (e) {
@@ -95,31 +147,6 @@ describe('Ow', function () {
 					assert.equal(e.message, 'foo');
 					assert.deepEqual(e.errors, [1, 2, 3]);
 				}
-			});
-		});
-	});
-
-	describe('.Invalid()', function () {
-		it('should throw a templated TypeError.', function () {
-			try {
-				Ow.Invalid('a', 'b');
-			} catch (e) {
-				assert.ok(e instanceof TypeError);
-				assert.equal(e.message, 'Invalid "a", one "b" expected.');
-			}
-		});
-
-		it('should throw if bad role.', function () {
-			assert.throws(() => Ow.Invalid(), {
-				name: 'TypeError',
-				message: 'Invalid "role", one "string" expected.',
-			});
-		});
-
-		it('should throw if bad expected.', function () {
-			assert.throws(() => Ow.Invalid('a'), {
-				name: 'TypeError',
-				message: 'Invalid "expected", one "string" expected.',
 			});
 		});
 	});

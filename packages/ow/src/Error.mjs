@@ -1,6 +1,4 @@
-import { _throw } from './throw.mjs';
-
-const Thrower = NewTarget => (...args) => _throw(new NewTarget(...args));
+import { Thrower } from './throw.mjs';
 
 export const Common = Thrower(Error);
 export const Eval = Thrower(EvalError);
