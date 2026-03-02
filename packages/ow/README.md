@@ -11,7 +11,7 @@ npm install @produck/ow
 ## Usage
 
 ```js
-import * as Ow from '@produck/ow';
+import * as Ow from "@produck/ow";
 ```
 
 ### `Ow.throw(value)`
@@ -19,10 +19,10 @@ import * as Ow from '@produck/ow';
 Throws the given value directly.
 
 ```js
-Ow.throw(new Error('something went wrong'));
+Ow.throw(new Error("something went wrong"));
 // => throws Error: something went wrong
 
-Ow.throw('plain string');
+Ow.throw("plain string");
 // => throws 'plain string'
 ```
 
@@ -34,19 +34,19 @@ accepts the same arguments as the error constructor and throws the constructed e
 ```js
 const throwTypeError = Ow.Thrower(TypeError);
 
-throwTypeError('invalid type');
+throwTypeError("invalid type");
 // => throws TypeError: invalid type
 
 class CustomError extends Error {
-    constructor(message) {
-        super(message);
-        this.name = 'CustomError';
-    }
+	constructor(message) {
+		super(message);
+		this.name = "CustomError";
+	}
 }
 
 const throwCustom = Ow.Thrower(CustomError);
 
-throwCustom('custom message');
+throwCustom("custom message");
 // => throws CustomError: custom message
 ```
 
@@ -66,13 +66,13 @@ A collection of pre-built thrower functions for all built-in error types.
 | `Ow.Error.Aggregate` | `AggregateError` |
 
 ```js
-Ow.Error.Type('expected a string');
+Ow.Error.Type("expected a string");
 // => throws TypeError: expected a string
 
-Ow.Error.Range('index out of bounds');
+Ow.Error.Range("index out of bounds");
 // => throws RangeError: index out of bounds
 
-Ow.Error.Aggregate([err1, err2], 'multiple errors');
+Ow.Error.Aggregate([err1, err2], "multiple errors");
 // => throws AggregateError: multiple errors
 ```
 
@@ -82,10 +82,10 @@ Type definitions are included. All thrower functions are fully typed with
 `ConstructorParameters` inference.
 
 ```ts
-import * as Ow from '@produck/ow';
+import * as Ow from "@produck/ow";
 
-Ow.Error.Type('msg');    // (...args: ConstructorParameters<TypeErrorConstructor>) => never
-Ow.throw(new Error());   // (any: unknown) => never
+Ow.Error.Type("msg"); // (...args: ConstructorParameters<TypeErrorConstructor>) => never
+Ow.throw(new Error()); // (any: unknown) => never
 ```
 
 ## Why
@@ -98,14 +98,15 @@ making exception throwing more flexible and composable.
 ```js
 // Without ow — statement only, cannot inline
 if (!input) {
-    throw new TypeError('input is required');
+	throw new TypeError("input is required");
 }
 
 // With ow — works as an expression
-const value = input ?? Ow.Error.Type('input is required');
+const value = input ?? Ow.Error.Type("input is required");
 
 // Arrow function — throw is not allowed in expression body
-const assertString = (v) => typeof v === 'string' || Ow.Error.Type('expected a string');
+const assertString = (v) =>
+	typeof v === "string" || Ow.Error.Type("expected a string");
 ```
 
 `Thrower()` creates reusable thrower functions that can be assigned,
