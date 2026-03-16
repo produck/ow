@@ -70,5 +70,5 @@ export namespace Error {
 	export const URI: Thrower<URIErrorConstructor>;
 
 	/** Throws an AggregateError. */
-	export const Aggregate: Thrower<AggregateErrorConstructor & ErrorConstructor>;
+	export const Aggregate: Thrower<ErrorConstructor & AggregateErrorConstructor>;
 }
