@@ -13,14 +13,11 @@
 	"exports": {
 		".": {
 			"import": "./src/index.mjs",
-			"require": "./src/index.gen.cjs",
 			"types": "./src/index.d.ts"
 		}
 	},
 	"scripts": {
-		"test": "node --test \"**/test/*.spec.mjs\"",
-		"build": "rollup -c script/rollup.config.mjs",
-		"prepublishOnly": "npm run build"
+		"test": "node --test \"**/test/*.spec.mjs\""
 	},
 	"keywords": [
 		"throw",

@@ -28,8 +28,9 @@ Ow.throw("plain string");
 
 ### `Ow.Thrower(ErrorConstructor)`
 
-Creates a thrower function bound to the specified error constructor. The returned function
-accepts the same arguments as the error constructor and throws the constructed error.
+Creates a thrower function bound to the specified error constructor. The
+returned function accepts the same arguments as the error constructor and
+throws the constructed error.
 
 ```js
 const throwTypeError = Ow.Thrower(TypeError);
