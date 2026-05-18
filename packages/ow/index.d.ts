@@ -12,9 +12,7 @@ export { _throw as throw };
  * A function type bound to a specific error constructor.
  * When called, it instantiates the error and throws it immediately.
  */
-type Thrower<C extends ErrorConstructor> = (
-	...args: ConstructorParameters<C>
-) => never;
+type Thrower<C extends ErrorConstructor> = (...args: ConstructorParameters<C>) => never;
 
 /**
  * Creates a Thrower function bound to the given error constructor.
@@ -30,9 +28,7 @@ type Thrower<C extends ErrorConstructor> = (
  * throwTypeError('invalid type'); // throws TypeError: invalid type
  * ```
  */
-export function Thrower<C extends ErrorConstructor>(
-	ErrorConstructor: C,
-): Thrower<C>;
+export function Thrower<C extends ErrorConstructor>(ErrorConstructor: C): Thrower<C>;
 
 /**
  * A collection of pre-bound error thrower functions.
@@ -48,27 +44,27 @@ export function Thrower<C extends ErrorConstructor>(
  * ```
  */
 export namespace Error {
-	/** Throws a generic Error. */
-	export const Common: Thrower<ErrorConstructor>;
+  /** Throws a generic Error. */
+  export const Common: Thrower<ErrorConstructor>;
 
-	/** Throws an EvalError. */
-	export const Eval: Thrower<EvalErrorConstructor>;
+  /** Throws an EvalError. */
+  export const Eval: Thrower<EvalErrorConstructor>;
 
-	/** Throws a RangeError. */
-	export const Range: Thrower<RangeErrorConstructor>;
+  /** Throws a RangeError. */
+  export const Range: Thrower<RangeErrorConstructor>;
 
-	/** Throws a ReferenceError. */
-	export const Reference: Thrower<ReferenceErrorConstructor>;
+  /** Throws a ReferenceError. */
+  export const Reference: Thrower<ReferenceErrorConstructor>;
 
-	/** Throws a SyntaxError. */
-	export const Syntax: Thrower<SyntaxErrorConstructor>;
+  /** Throws a SyntaxError. */
+  export const Syntax: Thrower<SyntaxErrorConstructor>;
 
-	/** Throws a TypeError. */
-	export const Type: Thrower<TypeErrorConstructor>;
+  /** Throws a TypeError. */
+  export const Type: Thrower<TypeErrorConstructor>;
 
-	/** Throws a URIError. */
-	export const URI: Thrower<URIErrorConstructor>;
+  /** Throws a URIError. */
+  export const URI: Thrower<URIErrorConstructor>;
 
-	/** Throws an AggregateError. */
-	export const Aggregate: Thrower<ErrorConstructor & AggregateErrorConstructor>;
+  /** Throws an AggregateError. */
+  export const Aggregate: Thrower<ErrorConstructor & AggregateErrorConstructor>;
 }

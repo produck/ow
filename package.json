@@ -1,24 +1,32 @@
 {
-	"name": "@produck/ow-workspace",
-	"private": true,
-	"scripts": {
-		"deps:install": "npm -v && npm install",
-		"deps:ci-install": "npm install --include=optional",
-		"lint": "eslint --fix packages/**/*.mjs",
-		"test": "npm test --workspaces --if-present",
-		"coverage": "c8 --reporter=lcov npm run test",
-		"publish": "npm run lint && lerna publish"
-	},
-	"workspaces": [
-		"packages/ow"
-	],
-	"devDependencies": {
-		"@eslint/js": "^10.0.1",
-		"@produck/eslint-rules": "^0.2.7",
-		"c8": "^11.0.0",
-		"eslint": "^10.0.3",
-		"globals": "^17.4.0",
-		"lerna": "^9.0.7",
-		"typescript-eslint": "^8.57.1"
-	}
+  "name": "@produck/ow-workspace",
+  "private": true,
+  "scripts": {
+    "test": "npm test --workspaces --if-present",
+    "publish": "npm exec -- lerna publish",
+    "produck:format": "prettier --write . --ignore-path .prettierignore --ignore-path .gitignore",
+    "produck:lint": "eslint --fix . --max-warnings=0",
+    "produck:install": "npm -v && npm install",
+    "produck:baseline": "npm exec --package=@produck/agent-toolkit@latest -- agent-toolkit enforce-node-baseline --cwd .",
+    "produck:commit:check": "npm run produck:format && npm run produck:lint",
+    "produck:coverage": "c8 --config .c8rc.json npm run test --workspaces --if-present",
+    "prepare": "husky",
+    "produck:publish:check": "npm run produck:install && npm run produck:format && npm run produck:lint && npm run produck:coverage",
+    "produck:publish": "npm run produck:publish:check && npm run publish --"
+  },
+  "workspaces": [
+    "packages/ow"
+  ],
+  "devDependencies": {
+    "@eslint/js": "^10.0.1",
+    "@produck/eslint-rules": "0.3.5",
+    "c8": "11.0.0",
+    "eslint": "^10.0.3",
+    "globals": "^17.4.0",
+    "lerna": "9.0.7",
+    "typescript-eslint": "^8.57.1",
+    "prettier": "3.8.3",
+    "husky": "9.1.7",
+    "@produck/agent-toolkit": "0.8.2"
+  }
 }

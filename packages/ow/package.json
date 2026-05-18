@@ -1,41 +1,46 @@
 {
-	"name": "@produck/ow",
-	"version": "0.2.3",
-	"description": "Throwing exception regularly.",
-	"files": [
-		"src"
-	],
-	"publishConfig": {
-		"access": "public"
-	},
-	"main": "index.mjs",
-	"types": "./src/index.d.ts",
-	"exports": {
-		".": {
-			"import": "./src/index.mjs",
-			"types": "./src/index.d.ts"
-		}
-	},
-	"scripts": {
-		"test": "node --test \"**/test/*.spec.mjs\""
-	},
-	"keywords": [
-		"throw",
-		"thrower",
-		"error",
-		"exception",
-		"assert",
-		"expression"
-	],
-	"author": "ChaosLee",
-	"license": "MIT",
-	"repository": {
-		"type": "git",
-		"url": "git+https://github.com/produck/ow.git",
-		"directory": "packages/ow"
-	},
-	"bugs": {
-		"url": "https://github.com/produck/ow/issues"
-	},
-	"homepage": "https://github.com/produck/ow#readme"
+  "name": "@produck/ow",
+  "version": "0.2.3",
+  "description": "Throwing exception regularly.",
+  "files": [
+    "src",
+    "index.d.ts"
+  ],
+  "publishConfig": {
+    "access": "public"
+  },
+  "main": "./src/index.mjs",
+  "types": "./index.d.ts",
+  "exports": {
+    ".": {
+      "import": "./src/index.mjs",
+      "types": "./index.d.ts"
+    }
+  },
+  "scripts": {
+    "test": "node test/index.mjs",
+    "produck:coverage": "c8 --reporter=lcov --reporter=html --reporter=text-summary npm test"
+  },
+  "keywords": [
+    "throw",
+    "thrower",
+    "error",
+    "exception",
+    "assert",
+    "expression"
+  ],
+  "author": "ChaosLee",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/produck/ow.git",
+    "directory": "packages/ow"
+  },
+  "bugs": {
+    "url": "https://github.com/produck/ow/issues"
+  },
+  "homepage": "https://github.com/produck/ow#readme",
+  "devDependencies": {
+    "c8": "11.0.0"
+  }
 }
