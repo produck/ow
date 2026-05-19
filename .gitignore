@@ -135,3 +135,6 @@ dist
 # Specific ignored / generated.
 *.ign*
 *.gen*
+
+# produck:org-baseline
+publish-assets/

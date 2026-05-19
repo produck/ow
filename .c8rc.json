@@ -1,11 +1,15 @@
 {
   "check-coverage": true,
-  "all": true,
-  "branches": 99.5,
-  "exclude": ["**/node_modules/**", "**/coverage/**", "**/dist/**", "**/build/**", "**/out/**"],
-  "functions": 99.5,
+  "exclude": [
+    "**/node_modules/**",
+    "**/coverage/**",
+    "**/dist/**",
+    "**/build/**",
+    "**/out/**"
+  ],
   "reporter": ["lcov", "html", "text-summary"],
-  "include": ["**/src/**"],
+  "branches": 99.5,
+  "functions": 99.5,
   "statements": 99.5,
   "lines": 99.5
 }

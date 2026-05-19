@@ -106,7 +106,8 @@ if (!input) {
 const value = input ?? Ow.Error.Type('input is required');
 
 // Arrow function — throw is not allowed in expression body
-const assertString = (v) => typeof v === 'string' || Ow.Error.Type('expected a string');
+const assertString = (v) =>
+  typeof v === 'string' || Ow.Error.Type('expected a string');
 ```
 
 `Thrower()` creates reusable thrower functions that can be assigned,

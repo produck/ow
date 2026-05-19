@@ -12,7 +12,9 @@ export { _throw as throw };
  * A function type bound to a specific error constructor.
  * When called, it instantiates the error and throws it immediately.
  */
-type Thrower<C extends ErrorConstructor> = (...args: ConstructorParameters<C>) => never;
+type Thrower<C extends ErrorConstructor> = (
+  ...args: ConstructorParameters<C>
+) => never;
 
 /**
  * Creates a Thrower function bound to the given error constructor.
@@ -28,7 +30,9 @@ type Thrower<C extends ErrorConstructor> = (...args: ConstructorParameters<C>) =
  * throwTypeError('invalid type'); // throws TypeError: invalid type
  * ```
  */
-export function Thrower<C extends ErrorConstructor>(ErrorConstructor: C): Thrower<C>;
+export function Thrower<C extends ErrorConstructor>(
+  ErrorConstructor: C,
+): Thrower<C>;
 
 /**
  * A collection of pre-bound error thrower functions.

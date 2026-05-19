@@ -40,7 +40,7 @@ Monorepo format (required for multi-package repositories):
 
 Example monorepo format:
 
-```
+```text
 foo:
 [FIX] race condition in auth handler
 [ADD] <test>: cover edge case for concurrent login
@@ -121,14 +121,14 @@ integration test)`
 
 Monorepo examples:
 
-```
+```text
 foo:
 [FIX] a
 [FIX] b
 [FIX] c
 ```
 
-```
+```text
 core:
 [ADD] <api>: new user authentication endpoint
 [REFACTOR] <test>: restructure session management tests
