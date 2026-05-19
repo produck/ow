@@ -7,7 +7,7 @@
     "produck:format": "prettier --write . --ignore-path .prettierignore --ignore-path .gitignore",
     "produck:lint": "eslint --fix . --max-warnings=0",
     "produck:install": "npm -v && npm install",
-    "produck:baseline": "npm exec --package=@produck/agent-toolkit@latest -- agent-toolkit enforce-node-baseline --cwd .",
+    "produck:baseline": "npm exec --package=@produck/agent-toolkit@latest -- agent-toolkit enforce-node-baseline --cwd . && npm run produck:install",
     "produck:commit:check": "npm run produck:format && npm run produck:lint",
     "produck:coverage": "c8 --config .c8rc.json npm run test --workspaces --if-present",
     "prepare": "husky",
@@ -19,7 +19,7 @@
   ],
   "devDependencies": {
     "@eslint/js": "10.0.1",
-    "@produck/eslint-rules": "0.3.6",
+    "@produck/eslint-rules": "0.4.0",
     "c8": "11.0.0",
     "eslint": "10.4.0",
     "globals": "17.6.0",
@@ -27,7 +27,7 @@
     "typescript-eslint": "8.59.4",
     "prettier": "3.8.3",
     "husky": "9.1.7",
-    "@produck/agent-toolkit": "0.9.1",
+    "@produck/agent-toolkit": "0.9.2",
     "@eslint/json": "1.2.0",
     "@eslint/markdown": "8.0.1",
     "@eslint/config-helpers": "0.6.0"
