@@ -39,5 +39,5 @@
     "test": "node test/index.mjs"
   },
   "types": "./index.d.ts",
-  "version": "0.2.5"
+  "version": "0.2.6"
 }
