@@ -4,9 +4,6 @@
     "url": "https://github.com/produck/ow/issues"
   },
   "description": "Throwing exception regularly.",
-  "devDependencies": {
-    "c8": "11.0.0"
-  },
   "exports": {
     ".": {
       "import": "./src/index.mjs",
